@@ -1,6 +1,7 @@
 import React from 'react';
 import FoodBanner from '../Banner/FoodBanner';
 import WhyChooseUs from '../WhyChooseUs/WhyChooseUs';
+import TopChef from '../TopChef/TopChef';
 
 
 const Home = () => {
@@ -8,6 +9,7 @@ const Home = () => {
         <div>
          <FoodBanner></FoodBanner>
       <WhyChooseUs></WhyChooseUs>
+      <TopChef></TopChef>
         </div>
     );
 };
