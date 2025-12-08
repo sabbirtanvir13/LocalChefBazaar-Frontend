@@ -2,7 +2,7 @@ import React from 'react';
 
 const Footer = () => {
     return (
-         <footer className="bg-[#5b57a6] text-white pt-24 pb-6 rounded-t-[150px]">
+         <footer className="bg-[#634832] text-white pt-24 pb-6 rounded-t-[150px]">
       <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-10">
 
         {/* Left: Useful Links */}
