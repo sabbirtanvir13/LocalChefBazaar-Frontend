@@ -175,7 +175,7 @@ const Navbar = () => {
   );
 
   return (
-    <div className="navbar bg-base-100 shadow-sm px-4">
+    <div className="navbar bg-black text-white shadow-sm px-4">
       {/* Navbar Start */}
       <div className="navbar-start">
         <Link className="btn btn-ghost text-xl flex items-center gap-2" to="/">
