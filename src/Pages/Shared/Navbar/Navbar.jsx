@@ -171,6 +171,16 @@ const Navbar = () => {
       <li>
         <NavLink to="/meals">Meals</NavLink>
       </li>
+      <li>
+        <NavLink to="/about">About</NavLink>
+      </li>
+
+      <li>
+        <NavLink to="/contact">Contact US</NavLink>
+      </li>
+       <li>
+        <NavLink to="/dashboard">Dashboard</NavLink>
+      </li>
     </>
   );
 
@@ -180,7 +190,7 @@ const Navbar = () => {
       <div className="navbar-start">
         <Link className="btn btn-ghost text-xl flex items-center gap-2" to="/">
           <Logo />
-          <span>Zap-Shift</span>
+        
         </Link>
       </div>
 
