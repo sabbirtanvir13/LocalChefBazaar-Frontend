@@ -3,6 +3,7 @@ import FoodBanner from '../Banner/FoodBanner';
 import WhyChooseUs from '../WhyChooseUs/WhyChooseUs';
 import TopChef from '../TopChef/TopChef';
 import Offer from '../Offer/Offer';
+import Satisfaction from '../Satisfaction/Satisfaction';
 
 
 const Home = () => {
@@ -11,6 +12,7 @@ const Home = () => {
          <FoodBanner></FoodBanner>
          <Offer></Offer>
       <WhyChooseUs></WhyChooseUs>
+      <Satisfaction></Satisfaction>
       <TopChef></TopChef>
         </div>
     );
