@@ -1,6 +1,7 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 
 import { router } from './Routes/Router.jsx'
 import { RouterProvider } from 'react-router'
@@ -22,6 +23,7 @@ createRoot(document.getElementById('root')).render(
       <AuthProvider>
         <RouterProvider router={router} />
       </AuthProvider>
+       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   </StrictMode>,
 )
