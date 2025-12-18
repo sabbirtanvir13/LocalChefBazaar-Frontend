@@ -1,62 +1,4 @@
-// import { useRef } from "react";
 
-// export default function Modal({meal}) {
-//   const modalRef = useRef(null);
-
-//   // Dummy total price for design
-//   const totalPrice = 440;
-// const { foodname, price, chefname, chef = {} } = meal;
-
-//   return (
-//     <>
-//       {/* Confirm Order Button */}
-//       <button
-//         className="mt-6 w-full bg-orange-500 hover:bg-orange-600 text-white py-3 rounded-xl font-semibold transition"
-//         onClick={() => modalRef.current.showModal()}
-//       >
-//         Confirm Order
-//       </button>
-
-//       {/* Modal */}
-//       <dialog ref={modalRef} className="modal">
-//         <div className="modal-box max-w-md">
-//           <h3 className="font-bold text-xl text-center text-orange-500">
-//             Confirm Your Order
-//           </h3>
-
-//           <p className="py-6 text-center text-gray-600">
-//             Your total price is{" "}
-//             <span className="font-bold text-black">${totalPrice}</span>.
-//             <br />
-//             Do you want to confirm the order?
-//           </p>
-
-//           {/* Buttons */}
-//           <div className="modal-action flex justify-center gap-4">
-//             {/* Cancel */}
-//             <button
-//               className="btn btn-outline btn-error px-8"
-//               onClick={() => modalRef.current.close()}
-//             >
-//               Cancel
-//             </button>
-
-//             {/* Yes / Confirm */}
-//             <button
-//               className="btn btn-success px-8"
-//               onClick={() => {
-//                 // future: SweetAlert / API call
-//                 modalRef.current.close();
-//               }}
-//             >
-//               Yes, Confirm
-//             </button>
-//           </div>
-//         </div>
-//       </dialog>
-//     </>
-//   );
-// }
 import { useRef, useState } from "react";
 import useAuth from "../hooks/useAuth";
 import axios from "axios";
@@ -79,7 +21,7 @@ export default function Modal({ meal, quantity = 1, address = "" }) {
             ingredients,
             deliveryArea,
             delivery,
-            quantity,
+            quantity:quantity,
 
             chefname,
             chef,

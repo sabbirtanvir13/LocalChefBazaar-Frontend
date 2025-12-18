@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import { useForm } from "react-hook-form";
-import { imageUpload } from "../../../src/utils/index.js"; // তোমার utility ফাইল অনুযায়ী path ঠিক করো
+import { imageUpload } from "../../../src/utils/index.js"; 
 
 const Profile = () => {
   const { user, updateUserProfile } = useAuth();
@@ -21,7 +21,7 @@ const Profile = () => {
       let photoURL = user?.photoURL;
 
       if (data.photo?.[0]) {
-        photoURL = await imageUpload(data.photo[0]); // utility function ব্যবহার
+        photoURL = await imageUpload(data.photo[0]); 
       }
 
       await updateUserProfile({ displayName: data.name, photoURL });
@@ -45,8 +45,12 @@ const Profile = () => {
             src={user?.photoURL || "https://i.ibb.co/2NfF0zF/default-avatar.png"}
             alt="Profile"
           />
+              <p className='p-2 px-4 text-xs text-white bg-lime-500 rounded-full'>
+            User
+          </p>
           <p className="text-lg font-medium">{user?.displayName || "No Name"}</p>
           <p className="text-gray-500">{user?.email}</p>
+           <p className="text-xs text-gray-400">UID: {user?.uid}</p>
         </div>
 
         <form onSubmit={handleSubmit(handleProfileUpdate)} className="space-y-4">

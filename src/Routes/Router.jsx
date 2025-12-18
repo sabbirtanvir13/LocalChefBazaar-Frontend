@@ -15,6 +15,8 @@ import MealsDetails from "../Pages/MealsDetails/MealsDetails";
 
 import OrderPage from "../Pages/Oderpage/OderPage";
 import { PaymentSuccess } from "../payment/PaymentSuccess";
+import PrivateRoute from "./PrivateRoute";
+import MyOrders from "../Pages/Dashboard/User/MyOrders";
 
 
 export const router = createBrowserRouter([
@@ -44,19 +46,22 @@ export const router = createBrowserRouter([
       },
       {
         path: "/paymentsuccessfull",
-        element: <PaymentSuccess/>
+        element: <PaymentSuccess>
+          <PaymentSuccess />
+        </PaymentSuccess>
       },
 
       {
 
         path: "/orderpage",
-        element: <OrderPage />
+        element:
+          <PrivateRoute>
+            <OrderPage />
+
+          </PrivateRoute>
 
       },
-      {
-        path: '/dashboard',
-        Component: DashboardLayout
-      }
+
     ]
   },
   {
@@ -78,11 +83,11 @@ export const router = createBrowserRouter([
     ]
   },
   {
-    path: 'dashboard',
+    path: '/dashboard',
     element:
-      <DashboardLayout></DashboardLayout>
-    ,
-
+      <PrivateRoute>
+        <DashboardLayout></DashboardLayout>
+      </PrivateRoute>,
     children: [
       {
         path: 'createmeal',
@@ -90,7 +95,13 @@ export const router = createBrowserRouter([
           <CreateMealForm></CreateMealForm>
         )
 
-      }
+      },
+      {
+        path: 'my-orders',
+        element: (
+          <MyOrders></MyOrders>
+        ),
+      },
     ]
   }
 ])
