@@ -53,13 +53,24 @@ const ManageUser = () => {
         <table className="min-w-full">
           <thead className="bg-gray-100">
             <tr>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Role</th>
-              <th>Status</th>
-              <th>Action</th>
+              <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase">
+                Name
+              </th>
+              <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase">
+                Email
+              </th>
+              <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase">
+                Role
+              </th>
+              <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase">
+                Status
+              </th>
+              <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase">
+                Action
+              </th>
             </tr>
           </thead>
+
 
           <tbody>
             {users.map(user => (

@@ -1,91 +1,4 @@
-// import React from "react";
-// import Container from "../Shared/Container";
-// import { useParams } from "react-router";
-// import { useQuery } from "@tanstack/react-query";
-// import axios from "axios";
 
-// export default function MealsDetails() {
-
-//     const { id } = useParams()
-
-//     const { data: meal = {}, isLoading, refetch } = useQuery({
-//         queryKey: ['meal', id],
-//         queryFn: async () => {
-//             const result = await axios(`${import.meta.env.VITE_API_URL}/meals/${id}`)
-//             return result.data
-//         }
-//     })
-//     console.log(meal)
-
-
-//     const {
-//         image,
-//         foodname,
-//         price,
-//         rating,
-//         ingredients,
-//         deliveryArea,
-//         delivery,
-//         experience,
-//         chef,
-//     } = meal
-
-//     return (
-//         <Container>
-//             <section className="bg-gray-100 py-16">
-//                 <div className="max-w-6xl mx-auto px-6">
-//                     <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
-//                         {/* Top Section */}
-//                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 p-8">
-//                             {/* Image */}
-//                             <div className="flex justify-center">
-//                                 <img
-//                                     src={image}
-//                                     className="w-full max-w-md rounded-2xl drop-shadow-xl"
-//                                 />
-//                             </div>
-
-//                             {/* Info */}
-//                             <div className="space-y-4">
-//                                 <h2 className="text-3xl font-extrabold">Food Name : {foodname}
-
-//                                 </h2>
-
-
-//                                 {/* Rating */}
-//                                 <div className="text-orange-500 text-lg">
-//                                     {Array(5)
-//                                         .fill(0)
-//                                         .map((_, i) => (
-//                                             <span key={i}>{i < rating ? "★" : "☆"}</span>
-//                                         ))}
-//                                 </div>
-//                                 <p className="text-2xl font-bold text-orange-500">${price}</p>
-//                                 <div className="grid grid-cols-2 gap-4 mt-6">
-//                                     <p><span className="font-semibold">Chef Name:{chef?.name}</span> John Doe</p>
-//                                     <p><span className="font-semibold">Chef ID:{chef?.email} </span> chef_12345</p>
-//                                     <p><span className="font-semibold">Experience:</span> {experience}</p>
-//                                     <p><span className="font-semibold">Delivery Area:</span> {deliveryArea}</p>
-//                                     <p><span className="font-semibold">Delivery Time:</span> {delivery}</p>
-//                                 </div>
-
-//                                 <button className="mt-6 w-full bg-orange-500 hover:bg-orange-600 text-white py-3 rounded-xl font-semibold shadow-lg transition">
-//                                     Order Now
-//                                 </button>
-//                             </div>
-//                         </div>
-
-//                         {/* Ingredients Section */}
-//                         <div className="border-t p-8">
-//                             <h3 className="text-xl font-bold mb-3">Ingredients</h3>
-//                           {ingredients}
-//                         </div>
-//                     </div>
-//                 </div>
-//             </section>
-//         </Container>
-//     );
-// }
 
 
 import React, { useState } from "react";
@@ -95,6 +8,9 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import AddReview from "../../components/form/AddReview";
 import MealReviews from "../MealReviews/MealReviews";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
+import useAuth from "../../hooks/useAuth";
+import Swal from "sweetalert2";
 
 export default function MealsDetails() {
   const { id } = useParams();
@@ -108,6 +24,38 @@ export default function MealsDetails() {
       return res.data;
     },
   });
+
+
+
+   const axiosSecure = useAxiosSecure();
+const { user } = useAuth();
+
+const handleAddFavorite = async () => {
+  if (!user) {
+    Swal.fire("Login required", "Please login first", "warning");
+    return;
+  }
+
+  const favoriteData = {
+    mealId: id,
+    mealName: foodname,
+    chefName: chefname,
+    price: price,
+  };
+
+  try {
+    await axiosSecure.post("/favorites", favoriteData);
+    Swal.fire("Added!", "Meal added to favorites ", "success");
+  } catch (error) {
+    if (error.response?.status === 409) {
+      Swal.fire("Oops!", "Already in favorites", "info");
+    } else {
+      Swal.fire("Error", "Something went wrong", "error");
+    }
+  }
+};
+
+
 
   // Loading state
   if (isLoading) {
@@ -188,9 +136,13 @@ export default function MealsDetails() {
                 <Link state={{ meal }} to='/orderpage' className="border rounded-full px-5 py-2 text-sm font-semibold hover:bg-orange-500 hover:text-white transition">
                   Order
                 </Link>
-                <Link state={{ meal }} to='/orderpage' className="border ml-[95px] rounded-full px-5 py-2 text-sm font-semibold hover:bg-orange-500 hover:text-white transition">
-               Add Favorite 
-                </Link>
+                <button
+                  onClick={handleAddFavorite}
+                  className="border ml-[95px] rounded-full px-5 py-2 text-sm font-semibold hover:bg-orange-500 hover:text-white transition"
+                >
+                  ❤️ Add Favorite
+                </button>
+
               </div>
             </div>
 

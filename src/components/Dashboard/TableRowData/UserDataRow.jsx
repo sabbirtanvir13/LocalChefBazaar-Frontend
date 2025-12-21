@@ -1,54 +1,112 @@
-// import { useState } from "react";
-// import UpdateUserRoleModal from "../../../Modal/UpdateUserRoleModal";
+// // import { useState } from "react";
+// // import UpdateUserRoleModal from "../../../Modal/UpdateUserRoleModal";
 
-// const UserDataRow = () => {
-//   const [isOpen, setIsOpen] = useState(false);
+// // const UserDataRow = () => {
+// //   const [isOpen, setIsOpen] = useState(false);
+
+// //   return (
+// //     <>
+// //       <tr className="border-b">
+// //         <td className="px-6 py-4 text-sm text-gray-800">
+// //           momon
+// //         </td>
+
+// //         <td className="px-6 py-4 text-sm text-gray-800">
+// //           user@email.com
+// //         </td>
+
+// //         <td className="px-6 py-4">
+// //           <span className="px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-700">
+// //             User
+// //           </span>
+// //         </td>
+
+// //         <td className="px-6 py-4">
+// //           <span className="px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-700">
+// //             Active
+// //           </span>
+// //         </td>
+
+// //         <td className="px-6 py-4">
+// //           <button
+// //             onClick={() => setIsOpen(true)}
+// //             className="px-4 py-1.5 rounded-lg bg-indigo-500 text-white text-sm hover:bg-indigo-600 transition"
+// //           >
+// //             Update Role
+// //           </button>
+// //         </td>
+// //       </tr>
+
+// //       <UpdateUserRoleModal
+// //         isOpen={isOpen}
+// //         closeModal={() => setIsOpen(false)}
+// //       />
+// //     </>
+// //   );
+// // };
+
+// // export default UserDataRow;
+// import Swal from "sweetalert2";
+// import useAxiosSecure from "../../../hooks/useAxiosSecure";
+
+
+// const UserDataRow = ({ user, refetch }) => {
+//   const axiosSecure = useAxiosSecure();
+
+//   const handleMakeFraud = async () => {
+//     const res = await axiosSecure.patch(
+//       `/users/make-fraud/${user._id}`
+//     );
+
+//     if (res.data.modifiedCount > 0) {
+//       Swal.fire("Success!", "User marked as fraud", "success");
+//       refetch();
+//     }
+//   };
+
+//   const showFraudBtn =
+//     user.role !== "admin" && user.status !== "fraud";
 
 //   return (
-//     <>
-//       <tr className="border-b">
-//         <td className="px-6 py-4 text-sm text-gray-800">
-//           momon
-//         </td>
+//     <tr className="border-b">
+//       <td>{user.name}</td>
+//       <td>{user.email}</td>
 
-//         <td className="px-6 py-4 text-sm text-gray-800">
-//           user@email.com
-//         </td>
+//       <td>
+//         <span className="badge">{user.role}</span>
+//       </td>
 
-//         <td className="px-6 py-4">
-//           <span className="px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-700">
-//             User
-//           </span>
-//         </td>
+//       <td>
+//         <span
+//           className={`badge ${
+//             user.status === "fraud"
+//               ? "bg-red-100 text-red-700"
+//               : "bg-green-100 text-green-700"
+//           }`}
+//         >
+//           {user.status}
+//         </span>
+//       </td>
 
-//         <td className="px-6 py-4">
-//           <span className="px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-700">
-//             Active
-//           </span>
-//         </td>
-
-//         <td className="px-6 py-4">
+//       <td>
+//         {showFraudBtn ? (
 //           <button
-//             onClick={() => setIsOpen(true)}
-//             className="px-4 py-1.5 rounded-lg bg-indigo-500 text-white text-sm hover:bg-indigo-600 transition"
+//             onClick={handleMakeFraud}
+//             className="px-3 py-1 bg-red-500 text-white rounded"
 //           >
-//             Update Role
+//             Make Fraud
 //           </button>
-//         </td>
-//       </tr>
-
-//       <UpdateUserRoleModal
-//         isOpen={isOpen}
-//         closeModal={() => setIsOpen(false)}
-//       />
-//     </>
+//         ) : (
+//           <span className="text-gray-400 text-sm">N/A</span>
+//         )}
+//       </td>
+//     </tr>
 //   );
 // };
 
 // export default UserDataRow;
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
-
 
 const UserDataRow = ({ user, refetch }) => {
   const axiosSecure = useAxiosSecure();
@@ -64,40 +122,64 @@ const UserDataRow = ({ user, refetch }) => {
     }
   };
 
-  const showFraudBtn =
-    user.role !== "admin" && user.status !== "fraud";
+  const isFraud = user.status === "fraud";
+  const showFraudBtn = user.role !== "admin" && !isFraud;
 
   return (
-    <tr className="border-b">
-      <td>{user.name}</td>
-      <td>{user.email}</td>
-
-      <td>
-        <span className="badge">{user.role}</span>
+    <tr className="border-b hover:bg-gray-50 transition">
+      {/* Name */}
+      <td className="px-6 py-4 text-sm font-medium text-gray-800">
+        {user.name || "N/A"}
       </td>
 
-      <td>
+      {/* Email */}
+      <td className="px-6 py-4 text-sm text-gray-600">
+        {user.email}
+      </td>
+
+      {/* Role */}
+      <td className="px-6 py-4">
         <span
-          className={`badge ${
-            user.status === "fraud"
-              ? "bg-red-100 text-red-700"
-              : "bg-green-100 text-green-700"
-          }`}
+          className={`px-3 py-1 rounded-full text-xs font-semibold capitalize
+            ${
+              user.role === "admin"
+                ? "bg-purple-100 text-purple-700"
+                : user.role === "chef"
+                ? "bg-blue-100 text-blue-700"
+                : "bg-gray-100 text-gray-700"
+            }
+          `}
         >
-          {user.status}
+          {user.role}
         </span>
       </td>
 
-      <td>
+      {/* Status */}
+      <td className="px-6 py-4">
+        <span
+          className={`px-3 py-1 rounded-full text-xs font-semibold
+            ${
+              isFraud
+                ? "bg-red-100 text-red-700"
+                : "bg-green-100 text-green-700"
+            }
+          `}
+        >
+          {isFraud ? "Fraud" : "Active"}
+        </span>
+      </td>
+
+      {/* Action */}
+      <td className="px-6 py-4">
         {showFraudBtn ? (
           <button
             onClick={handleMakeFraud}
-            className="px-3 py-1 bg-red-500 text-white rounded"
+            className="px-4 py-1.5 rounded-md bg-red-500 text-white text-xs font-medium hover:bg-red-600 transition"
           >
             Make Fraud
           </button>
         ) : (
-          <span className="text-gray-400 text-sm">N/A</span>
+          <span className="text-gray-400 text-xs">Not Allowed</span>
         )}
       </td>
     </tr>

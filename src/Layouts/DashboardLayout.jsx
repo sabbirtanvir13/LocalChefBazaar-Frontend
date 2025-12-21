@@ -79,7 +79,7 @@ const DashboardLayout = () => {
                   </li>
 
                   <li>
-                    <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="My-Reviews" to='/dashboard/myreviews'>
+                    <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="My-Reviews" to='/dashboard/myReviews'>
                       <FaStar />
                       <span className="is-drawer-close:hidden">My-Reviews</span>
                     </NavLink>

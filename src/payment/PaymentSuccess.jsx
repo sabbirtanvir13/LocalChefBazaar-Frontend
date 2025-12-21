@@ -1,23 +1,4 @@
-// import axios from "axios";
-// import { useEffect } from "react";
-// import { useSearchParams } from "react-router";
 
-// export const PaymentSuccess = () => {
-//   const [searchParams] = useSearchParams();
-//   const sessionId = searchParams.get("session_id");
-//  useEffect(()=>{
-// if(sessionId){
-// // fetch
-// axios.post(`${import.meta.env.VITE_API_URL}/paymentsuccessfull`,{sessionId})
-// }
-//  },[sessionId])
-//   return (
-//     <div>
-//       <h1>✅ Payment Successful</h1>
-//       <p>Session ID: {sessionId}</p>
-//     </div>
-//   );
-// };
 import axios from "axios";
 import { useEffect, useRef } from "react";
 import { Link, useSearchParams } from "react-router";
@@ -26,20 +7,7 @@ export const PaymentSuccess = () => {
   const [searchParams] = useSearchParams();
   const sessionId = searchParams.get("session_id");
 
-  // useEffect(() => {
-  //   if (!sessionId) return;
-
-  //   axios
-  //     .post(`${import.meta.env.VITE_API_URL}/paymentsuccessfull`, { sessionId })
-  //     .then(res => {
-  //       console.log("✅ Order saved:", res.data);
-  //     })
-  //     .catch(err => {
-  //       console.error("❌ Save failed:", err);
-  //     });
-
-  // }, [sessionId]);
-
+ 
 
 const calledRef = useRef(false);
 

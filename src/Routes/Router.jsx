@@ -19,10 +19,11 @@ import PrivateRoute from "./PrivateRoute";
 import MyOrders from "../Pages/Dashboard/User/MyOrders";
 import MyMeals from "../Pages/Dashboard/Chef/MyMeals";
 import MealReviews from "../Pages/MealReviews/MealReviews";
-import FavoriteMeal from "../Pages/FavoriteMeal/FavoriteMeal";
+import FavoriteMeal from "../Pages/Dashboard/User/FavoriteMeal";
 import Statistics from "../Pages/Dashboard/Common/Statistics";
 import ManageUsers from "../Pages/Dashboard/Admin/ManageUser";
 import ManageRequest from "../Pages/Dashboard/Admin/ManageRequest";
+import MyReview from "../Pages/Dashboard/User/MyReview";
 
 
 
@@ -118,7 +119,7 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: 'myreviews',
+        path: 'reviews',
         element: (
          <MealReviews></MealReviews>
         ),
@@ -127,6 +128,12 @@ export const router = createBrowserRouter([
         path: 'myfavorite',
         element: (
         <FavoriteMeal></FavoriteMeal>
+        ),
+      },
+      {
+        path: 'myReviews',
+        element: (
+        <MyReview></MyReview>
         ),
       },
       {
