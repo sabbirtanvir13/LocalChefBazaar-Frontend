@@ -24,6 +24,7 @@ import Statistics from "../Pages/Dashboard/Common/Statistics";
 import ManageUsers from "../Pages/Dashboard/Admin/ManageUser";
 import ManageRequest from "../Pages/Dashboard/Admin/ManageRequest";
 import MyReview from "../Pages/Dashboard/User/MyReview";
+import ChefOrderRequests from "../Pages/Dashboard/Chef/ChefOrderRequests";
 
 
 
@@ -144,6 +145,7 @@ export const router = createBrowserRouter([
       },
       { path: "manageUser", element: <ManageUsers /> },
       { path: "manageRequest", element: <ManageRequest></ManageRequest> },
+      { path: "orderRequest", element: <ChefOrderRequests></ChefOrderRequests> },
     ]
   }
 ])

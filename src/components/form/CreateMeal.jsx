@@ -1,50 +1,57 @@
 import React from "react";
-import { useForm } from "react-hook-form";
+
 import { imageUpload } from "../../utils";
 import useAuth from "../../hooks/useAuth";
-import axios from "axios";
-import { useMutation } from "@tanstack/react-query";
+
+import { useMutation, useQuery } from "@tanstack/react-query";
 import LoadingSpinner from "../../Pages/Shared/LoadingSpinner";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
+import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
 
 export default function CreateMealForm() {
   const { user } = useAuth()
+const axiosSecure =useAxiosSecure()
 
 
-  const { isPending, mutateAsync, reset: mutationreset } = useMutation({
-    mutationFn: async (payload) => await axios.post(`${import.meta.env.VITE_API_URL}/save-meals`, payload),
-    onSuccess: data => {
-      console.log(data)
-      mutationreset()
-    },
-    onError: error => {
-      console.log(error)
-    },
-    onMutate: payload => {
-      console.log('i will post this data ', payload)
-    },
-
-    onSettled: (data, error) => {
-      if (data) console.log(data)
-      if (error) console.log(error)
-    },
-
-    retry: 3,
-
-  })
-
-
-
-
-
-
-
-
-  const {
+    const {
     register,
     handleSubmit,
     reset,
     formState: { errors }
   } = useForm();
+
+
+
+
+    // 🔹 save meal mutation (JWT protected)
+  const { mutateAsync, isPending } = useMutation({
+    mutationFn: payload => axiosSecure.post("/save-meals", payload),
+    onSuccess: () => {
+      Swal.fire("Success", "Meal added successfully", "success");
+      reset();
+    },
+    onError: () => {
+      Swal.fire("Error", "Unauthorized or server error", "error");
+    },
+  });
+
+
+
+  
+  const { data: dbUser, isLoading } = useQuery({
+    queryKey: ["me"],
+    queryFn: async () => {
+      const res = await axiosSecure.get("/me")
+      return res.data
+    }
+  })
+
+  if (isLoading || isPending) {
+    return <LoadingSpinner />;
+  }
+
+
 
 
   const onSubmit = async data => {
@@ -71,7 +78,8 @@ export default function CreateMealForm() {
        chef: {
           image: user?.photoURL,
           name: user?.displayName,
-          email: user?.email
+          email: user?.email,
+                chefId: dbUser?.chefId, 
         }
       }
 
@@ -222,23 +230,23 @@ export default function CreateMealForm() {
           {/* Chef ID */}
           <div className="flex flex-col">
             <label className="font-semibold mb-1">Chef ID</label>
-            <input
-              type="text"
-              className="border rounded-xl p-3 focus:outline-none focus:ring-2"
-              placeholder="Auto-generated"
-              readOnly
-            />
+             <input
+            readOnly
+            value={dbUser?.chefId || ""}
+            className="input input-bordered bg-gray-100"
+            placeholder="Chef ID"
+          />
           </div>
 
           {/* User Email */}
           <div className="flex flex-col">
             <label className="font-semibold mb-1">User Email</label>
-            <input
-              type="email"
-              className="border rounded-xl p-3 bg-gray-100"
-              placeholder="Auto-filled"
-              readOnly
-            />
+           <input
+            readOnly
+            value={user?.email || ""}
+            className="input input-bordered bg-gray-100"
+            placeholder="User Email"
+          />
           </div>
 
  

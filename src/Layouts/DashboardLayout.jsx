@@ -131,6 +131,14 @@ const DashboardLayout = () => {
                     </NavLink>
 
                   </li>
+                  {/* chef List item */}
+                  <li>
+                    <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip=" Order-Requests" to='/dashboard/orderRequest'>
+                      <FaUtensils />
+                      <span className="is-drawer-close:hidden"> Order-Requests</span>
+                    </NavLink>
+
+                  </li>
 
 
                 </>
