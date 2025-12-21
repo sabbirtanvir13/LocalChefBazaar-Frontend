@@ -9,10 +9,10 @@ const UserOrderDataRow = ({order}) => {
     image,
     price,
     quantity,
-    orderStatus,
-    paymentStatus,
+    // orderStatus,
+    // paymentStatus,
     chef,
-    deliveryTime,
+    // deliveryTime,
   } = order||{}
 
   return (

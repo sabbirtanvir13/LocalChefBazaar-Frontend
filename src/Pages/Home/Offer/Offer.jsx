@@ -5,7 +5,7 @@ const sandwichImage = 'https://img.freepik.com/premium-photo/bargar-fast-food-im
 
 const Offer = () => {
   return (
-    <div className="flex  text-white min-h-[300px] items-center relative overflow-hidden">
+    <div className="flex mt-[100px] text-white min-h-[300px] items-center relative overflow-hidden">
      
       <div className="relative w-1/2 flex items-center justify-center">
         

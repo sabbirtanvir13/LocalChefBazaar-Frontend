@@ -6,7 +6,7 @@ import { Link, useLocation, useNavigate } from 'react-router';
 
 import useAuth from '../../../hooks/useAuth';
 import SocialLogin from '../SocialLogin';
-import { imageUpload } from '../../../utils';
+import { imageUpload, saveUpdateUser } from '../../../utils';
 
 const Register = () => {
   const location = useLocation();
@@ -21,30 +21,41 @@ const Register = () => {
 
   const { registerUser, updateUserProfile } = useAuth();
 
-  const handelRegistration = async (data) => {
-  try {
-    const profileImage = data.photo[0];
-    
- 
-    await registerUser(data.email, data.password);
 
-  
+const handelRegistration = async (data) => {
+  try {
+    
+    const profileImage = data.photo[0];
+
+    
     const imageURL = await imageUpload(profileImage);
 
-   
-    const profile = {
+    //  register user
+    const result = await registerUser(data.email, data.password);
+
+    //  update firebase profile
+    await updateUserProfile({
       displayName: data.name,
       photoURL: imageURL,
-    };
+    });
 
-    await updateUserProfile(profile);
+    //  save user to DB
+    await saveUpdateUser({
+      name: data.name,
+      email: data.email,
+      image: imageURL,
+      uid: result.user.uid,
+      // role: "user",
+    });
 
-  
+    // redirect
     navigate(location.state?.from || "/");
+
   } catch (error) {
-    console.log(error);
+    console.log(" Registration Error:", error);
   }
 };
+
 
 
   return (

@@ -12,6 +12,7 @@ export default function Card({ meal }) {
     rating,
     deliveryArea,
     chef,
+   chefname
   } = meal || {};
 
   return (
@@ -21,7 +22,7 @@ export default function Card({ meal }) {
         <img
           src={image}
           alt={foodname}
-          className="w-40 mx-auto -mt-14 drop-shadow-lg"
+          className="w-40 h-40 mx-auto -mt-14 rounded-xl object-cover drop-shadow-lg"
         />
 
         {/* Rating */}
@@ -38,7 +39,7 @@ export default function Card({ meal }) {
 
         {/* Chef Info */}
         <p className="text-sm text-gray-600 mt-1">
-          Chef: <span className="font-medium">{chef?.name}</span>
+          Chef: <span className="font-medium">{chefname}</span>
         </p>
         <p className="text-xs text-gray-400">Chef ID: {chef?.email}</p>
 

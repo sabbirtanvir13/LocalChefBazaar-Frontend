@@ -17,6 +17,13 @@ import OrderPage from "../Pages/Oderpage/OderPage";
 import { PaymentSuccess } from "../payment/PaymentSuccess";
 import PrivateRoute from "./PrivateRoute";
 import MyOrders from "../Pages/Dashboard/User/MyOrders";
+import MyMeals from "../Pages/Dashboard/Chef/MyMeals";
+import MealReviews from "../Pages/MealReviews/MealReviews";
+import FavoriteMeal from "../Pages/FavoriteMeal/FavoriteMeal";
+import Statistics from "../Pages/Dashboard/Common/Statistics";
+import ManageUsers from "../Pages/Dashboard/Admin/ManageUser";
+import ManageRequest from "../Pages/Dashboard/Admin/ManageRequest";
+
 
 
 export const router = createBrowserRouter([
@@ -78,7 +85,9 @@ export const router = createBrowserRouter([
       },
       {
         path: '/profile',
-        Component: Profile
+        element: <PrivateRoute>
+         <Profile></Profile>
+        </PrivateRoute>
       }
     ]
   },
@@ -102,6 +111,32 @@ export const router = createBrowserRouter([
           <MyOrders></MyOrders>
         ),
       },
+      {
+        path: 'myMeals',
+        element: (
+         <MyMeals></MyMeals>
+        ),
+      },
+      {
+        path: 'myreviews',
+        element: (
+         <MealReviews></MealReviews>
+        ),
+      },
+      {
+        path: 'myfavorite',
+        element: (
+        <FavoriteMeal></FavoriteMeal>
+        ),
+      },
+      {
+        path: 'statistics',
+        element: (
+    <Statistics></Statistics>
+        ),
+      },
+      { path: "manageUser", element: <ManageUsers /> },
+      { path: "manageRequest", element: <ManageRequest></ManageRequest> },
     ]
   }
 ])

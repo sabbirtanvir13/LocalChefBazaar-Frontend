@@ -1,9 +1,22 @@
 import React from 'react';
 import { Link, NavLink, Outlet } from "react-router";
 import Navbar from '../Pages/Shared/Navbar/Navbar';
-import { IoIosCreate } from 'react-icons/io';
-import { FaFirstOrder } from 'react-icons/fa6';
+import { IoIosCreate, IoMdAddCircleOutline } from 'react-icons/io';
+import { FaChartBar, FaClipboardList, FaFirstOrder, FaHeart, FaRegChartBar, FaStar, FaUtensils } from 'react-icons/fa6';
+import useRole from '../hooks/useRole';
+import LoadingSpinner from '../Pages/Shared/LoadingSpinner';
+import { BsFillCartCheckFill } from 'react-icons/bs';
+import Logo from '../components/Logo/Logo';
+import { FaUsersCog } from 'react-icons/fa';
 const DashboardLayout = () => {
+
+
+
+  const [role, isRoleLoading] = useRole()
+
+
+  if (isRoleLoading) return <LoadingSpinner></LoadingSpinner>
+
   return (
     <div className="drawer   lg:drawer-open">
       <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
@@ -25,37 +38,143 @@ const DashboardLayout = () => {
         <label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay"></label>
         <div className="flex min-h-full flex-col items-start bg-base-200 is-drawer-close:w-14 is-drawer-open:w-64">
           {/* Sidebar content here */}
-          <ul className="menu w-full grow">
-            {/* List item */}
-            <li>
-              <Link to='/' className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Homepage">
-                {/* Home icon */}
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" strokeLinejoin="round" strokeLinecap="round" strokeWidth="2" fill="none" stroke="currentColor" className="my-1.5 inline-block size-4"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"></path><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>
-                <span className="is-drawer-close:hidden">Homepage</span>
-              </Link>
-            </li>
 
-            {/* our dashboard link  */}
-            <li>
-              <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="createmeal" to='/dashboard/createmeal'>
-                <IoIosCreate />
-                <span className="is-drawer-close:hidden">Create Meal</span>
-              </NavLink>
-            </li>
+          
+            <ul className="menu w-full grow">
 
-            {/* List item */}
-            <li>
-              <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="MY-Orders" to='/dashboard/my-orders'>
-                <FaFirstOrder />
-                <span className="is-drawer-close:hidden">MY-Orders</span>
-              </NavLink>
 
-            </li>
-          </ul>
+
+              {/* List item */}
+              <li>
+                <Link to='/' className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Homepage">
+                  {/* Home icon */}
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" strokeLinejoin="round" strokeLinecap="round" strokeWidth="2" fill="none" stroke="currentColor" className="my-1.5 inline-block size-4"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"></path><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>
+                  <span className="is-drawer-close:hidden">Homepage</span>
+                </Link>
+              </li>
+
+              {/* our dashboard link  */}
+
+
+
+              {/* user */}
+
+              {
+               role?.toLowerCase() === 'user'&& <>
+                  {/* User List item */}
+
+                  <li>
+                    <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Statistics" to='/dashboard/statistics'>
+                      <FaChartBar />
+                      <span className="is-drawer-close:hidden">Statistics</span>
+                    </NavLink>
+
+                  </li>
+
+                  <li>
+                    <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="MY-Orders" to='/dashboard/my-orders'>
+                      <BsFillCartCheckFill />
+                      <span className="is-drawer-close:hidden">My-Orders</span>
+                    </NavLink>
+                  </li>
+
+                  <li>
+                    <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="My-Reviews" to='/dashboard/myreviews'>
+                      <FaStar />
+                      <span className="is-drawer-close:hidden">My-Reviews</span>
+                    </NavLink>
+
+                  </li>
+                  {/* user */}
+                  <li>
+                    <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="My-Favorite" to='/dashboard/myfavorite'>
+                      <FaHeart />
+                      <span className="is-drawer-close:hidden">My-Favorite</span>
+                    </NavLink>
+
+                  </li>
+
+
+
+                </>
+              }
+
+
+
+              {
+                role?.toLowerCase() === 'chef' && <>
+
+                  {/* chef */}
+                  <li>
+                    <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Statistics" to='/dashboard/statistics'>
+                      <FaRegChartBar />
+                      <span className="is-drawer-close:hidden">Statistics</span>
+                    </NavLink>
+
+                  </li>
+
+
+
+
+                  <li>
+                    <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="createmeal" to='/dashboard/createmeal'>
+                      <IoMdAddCircleOutline />
+                      <span className="is-drawer-close:hidden">Create Meal</span>
+                    </NavLink>
+                  </li>
+
+                  {/* chef List item */}
+                  <li>
+                    <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="My-Meals" to='/dashboard/myMeals'>
+                      <FaUtensils />
+                      <span className="is-drawer-close:hidden">My-Meals</span>
+                    </NavLink>
+
+                  </li>
+
+
+                </>
+              }
+
+              {/* admin */}
+
+              {
+                role?.toLowerCase() === 'admin' && <>
+                  <li>
+                    <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Statistics" to='/dashboard/statistics'>
+                      <FaChartBar />
+                      <span className="is-drawer-close:hidden">Statistics</span>
+                    </NavLink>
+
+                  </li>
+                  <li>
+                    <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Manage-User" to='/dashboard/manageUser'>
+                      <FaUsersCog />
+                      <span className="is-drawer-close:hidden">Manage-User</span>
+                    </NavLink>
+
+                  </li>
+                  <li>
+                    <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Manage-Request" to='/dashboard/manageRequest'>
+                      <FaClipboardList />
+
+                      <span className="is-drawer-close:hidden">Manage-Request</span>
+                    </NavLink>
+
+                  </li>
+              
+
+
+                </>
+              }
+
+
+
+            </ul>
+          </div>
         </div>
       </div>
-    </div>
-  );
+      );
 };
 
-export default DashboardLayout;
+      export default DashboardLayout;
