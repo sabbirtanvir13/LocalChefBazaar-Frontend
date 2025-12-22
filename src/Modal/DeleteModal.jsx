@@ -96,25 +96,29 @@ const DeleteModal = ({ isOpen, closeModal, onConfirm }) => {
   if (!isOpen) return null
 
   return (
-    <div className='fixed inset-0 bg-black/40 flex items-center justify-center z-50'>
-      <div className='bg-white p-6 rounded-lg w-80'>
-        <h2 className='text-lg font-semibold mb-4'>
-          Delete Meal?
+    <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
+      <div className="bg-white p-6 rounded-lg w-80">
+        <h2 className="text-lg font-semibold mb-4">
+          Cancel Order?
         </h2>
 
-        <div className='flex justify-end gap-3'>
+        <p className="text-sm text-gray-500 mb-4">
+          Are you sure you want to cancel this order?
+        </p>
+
+        <div className="flex justify-end gap-3">
           <button
             onClick={closeModal}
-            className='px-3 py-1 bg-gray-200 rounded'
+            className="px-3 py-1 bg-gray-200 rounded"
           >
-            Cancel
+            No
           </button>
 
           <button
             onClick={onConfirm}
-            className='px-3 py-1 bg-red-500 text-white rounded'
+            className="px-3 py-1 bg-red-500 text-white rounded"
           >
-            Delete
+            Yes, Cancel
           </button>
         </div>
       </div>

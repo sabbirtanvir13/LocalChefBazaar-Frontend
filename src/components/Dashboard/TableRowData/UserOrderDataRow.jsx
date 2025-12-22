@@ -1,79 +1,84 @@
+
+
 import { useState } from 'react'
 import DeleteModal from '../../../Modal/DeleteModal'
+import useAxiosSecure from '../../../hooks/useAxiosSecure'
 
-const UserOrderDataRow = ({order}) => {
-  let [isOpen, setIsOpen] = useState(false)
-  const closeModal = () => setIsOpen(false)
- const {
+const UserOrderDataRow = ({ order, refetch }) => {
+  const [isOpen, setIsOpen] = useState(false)
+  const axiosSecure = useAxiosSecure()
+
+  const {
+    _id,
     name,
     image,
     price,
     quantity,
-    // orderStatus,
-    // paymentStatus,
     chef,
-    // deliveryTime,
-  } = order||{}
+    status,
+    deliveryTime,
+  } = order || {}
+
+  const isDelivered = status === 'delivered'
+
+
+  const handleDelete = async () => {
+    try {
+      await axiosSecure.delete(`/orders/${_id}`)
+      setIsOpen(false)
+      refetch()
+    } catch (error) {
+      console.error(error)
+    }
+  }
 
   return (
-    <tr>
-      <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
-        <div className='flex items-center'>
-          <div className='shrink-0'>
-            <div className='block relative'>
-              <img
-                alt='profile'
-                src={image}
-                className='mx-auto object-cover rounded h-10 w-15 '
-              />
-            </div>
-          </div>
-        </div>
+    <tr className="bg-gray-50">
+      <td className="px-5 py-4 border-b">
+        <img src={image} alt={name} className="h-10 w-10 rounded" />
       </td>
 
-      <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
-        <p className='text-gray-900'>{name}</p>
-      </td>
-      <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
-        <p className='text-gray-900'>{chef?.name}</p>
-      </td>
-      <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
-        <p className='text-gray-900'>   {chef?.uid || 'N/A'}</p>
-      </td>
+      <td className="px-5 py-4 border-b">{name}</td>
+      <td className="px-5 py-4 border-b">{chef?.name || 'N/A'}</td>
+      <td className="px-5 py-4 border-b">{chef?.chefId || 'N/A'}</td>
+      <td className="px-5 py-4 border-b">{deliveryTime || '30 min'}</td>
+      <td className="px-5 py-4 border-b">${price}</td>
+      <td className="px-5 py-4 border-b">{quantity}</td>
 
-
-      {/* time  */}
-      
-
-      <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
-        <p className='text-gray-900'>${price}</p>
-      </td>
-
-      <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
-        <p className='text-gray-900'>{price}</p>
-      </td>
-      <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
-        <p className='text-gray-900'>{quantity}</p>
-      </td>
-      {/* status  */}
-      <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
-        <p className='text-gray-900'>pendind</p>
-      </td>
-      {/* payment */}
-      <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
-        <p className='text-gray-900'>paid</p>
-      </td>
-
-      <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
-        <button
-          onClick={() => setIsOpen(true)}
-          className='relative disabled:cursor-not-allowed cursor-pointer inline-block px-3 py-1 font-semibold text-lime-900 leading-tight'
+      <td className="px-5 py-4 border-b">
+        <span
+          className={`px-2 py-1 rounded text-xs ${
+            isDelivered
+              ? 'bg-green-100 text-green-700'
+              : 'bg-yellow-100 text-yellow-700'
+          }`}
         >
-          <span className='absolute cursor-pointer inset-0 bg-red-200 opacity-50 rounded-full'></span>
-          <span className='relative cursor-pointer'>Cancel</span>
+          {status || 'pending'}
+        </span>
+      </td>
+
+      <td className="px-5 py-4 border-b">Paid</td>
+
+      <td className="px-5 py-4 border-b">
+        <button
+          disabled={isDelivered}
+          onClick={() => setIsOpen(true)}
+          className={`px-3 py-1 rounded-full text-sm ${
+            isDelivered
+              ? 'bg-gray-300 cursor-not-allowed'
+              : 'bg-red-500 text-white hover:bg-red-600'
+          }`}
+        >
+          Cancel
         </button>
 
-        <DeleteModal isOpen={isOpen} closeModal={closeModal} />
+        {!isDelivered && (
+          <DeleteModal
+            isOpen={isOpen}
+            closeModal={() => setIsOpen(false)}
+            onConfirm={handleDelete}
+          />
+        )}
       </td>
     </tr>
   )
