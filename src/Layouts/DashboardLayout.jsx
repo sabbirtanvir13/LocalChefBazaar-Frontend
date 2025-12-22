@@ -5,10 +5,12 @@ import { IoIosCreate, IoMdAddCircleOutline } from 'react-icons/io';
 import { FaChartBar, FaClipboardList, FaFirstOrder, FaHeart, FaRegChartBar, FaStar, FaUtensils } from 'react-icons/fa6';
 import useRole from '../hooks/useRole';
 import LoadingSpinner from '../Pages/Shared/LoadingSpinner';
-import { BsFillCartCheckFill } from 'react-icons/bs';
+import { BsCartCheckFill, BsFillCartCheckFill } from 'react-icons/bs';
 import Logo from '../components/Logo/Logo';
 import { FaUsersCog } from 'react-icons/fa';
+
 const DashboardLayout = () => {
+
 
 
 
@@ -134,7 +136,7 @@ const DashboardLayout = () => {
                   {/* chef List item */}
                   <li>
                     <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip=" Order-Requests" to='/dashboard/orderRequest'>
-                      <FaUtensils />
+                   <BsCartCheckFill />
                       <span className="is-drawer-close:hidden"> Order-Requests</span>
                     </NavLink>
 
