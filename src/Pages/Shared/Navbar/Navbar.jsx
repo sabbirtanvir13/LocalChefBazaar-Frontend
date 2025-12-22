@@ -1,9 +1,9 @@
 
 
-import React, { useState } from "react";
 import { Link, NavLink } from "react-router";
 import Logo from "../../../components/Logo/Logo";
 import useAuth from "../../../hooks/useAuth";
+import { useState } from "react";
 
 const Navbar = () => {
   const { user, logout } = useAuth();
@@ -13,6 +13,10 @@ const Navbar = () => {
     logout().catch(console.log);
     setMenuOpen(false);
   };
+
+
+
+  
 
   const links = (
     <>
@@ -29,7 +33,7 @@ const Navbar = () => {
       <li>
         <NavLink className='text-black' to="/contact">Contact US</NavLink>
       </li>
-       <li>
+      <li>
         <NavLink className='text-black' to="/dashboard">Dashboard</NavLink>
       </li>
     </>
@@ -41,7 +45,7 @@ const Navbar = () => {
       <div className="navbar-start">
         <Link className="btn btn-ghost text-xl flex items-center gap-2" to="/">
           <Logo />
-        
+
         </Link>
       </div>
 
@@ -52,6 +56,9 @@ const Navbar = () => {
 
       {/* Navbar End */}
       <div className="navbar-end flex items-center gap-2">
+
+
+
         {!user && (
           <>
             <Link to="/login" className="btn btn-outline">
