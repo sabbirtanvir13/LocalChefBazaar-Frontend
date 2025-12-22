@@ -70,6 +70,7 @@
 // }
 import React from "react";
 import BargerBanner from '../../../../src/assets/floating-juicy-burger-_11665643 (1).png'
+import { Link } from "react-router";
 export default function FoodBanner() {
   return (
     <section className="bg-[#fff7f0] min-h-screen flex items-center overflow-hidden">
@@ -93,13 +94,14 @@ export default function FoodBanner() {
           </p>
 
           <div className="mt-8 flex items-center gap-4">
-            <button className="bg-orange-500 hover:bg-orange-600 text-white px-7 py-3 rounded-full font-semibold shadow-lg transition">
-              Order Now
-            </button>
+            <Link to='/meals' className="bg-orange-500 hover:bg-orange-600 text-white px-7 py-3 rounded-full font-semibold shadow-lg transition">
+              Menu
+            </Link>
 
-            <button className="flex items-center gap-2 border border-orange-300 px-7 py-3 rounded-full text-orange-500 font-semibold hover:bg-orange-50 transition">
+            <a target="_blank"
+              rel="noopener noreferrer" href="https://youtube.com/shorts/TFt7n-U-p-g?si=rIvTgkU9XCmvJs5E" className="flex items-center gap-2 border border-orange-300 px-7 py-3 rounded-full text-orange-500 font-semibold hover:bg-orange-50 transition">
               ▶ Watch Cooking
-            </button>
+            </a>
           </div>
         </div>
 

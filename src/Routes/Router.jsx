@@ -28,6 +28,7 @@ import ChefOrderRequests from "../Pages/Dashboard/Chef/ChefOrderRequests";
 
 
 
+
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -88,7 +89,7 @@ export const router = createBrowserRouter([
       {
         path: '/profile',
         element: <PrivateRoute>
-         <Profile></Profile>
+          <Profile></Profile>
         </PrivateRoute>
       }
     ]
@@ -103,7 +104,10 @@ export const router = createBrowserRouter([
       {
         path: 'createmeal',
         element: (
-          <CreateMealForm></CreateMealForm>
+       
+  <CreateMealForm></CreateMealForm>
+      
+        
         )
 
       },
@@ -116,36 +120,57 @@ export const router = createBrowserRouter([
       {
         path: 'myMeals',
         element: (
-         <MyMeals></MyMeals>
+          
+ <MyMeals></MyMeals>
+        
         ),
       },
       {
         path: 'reviews',
         element: (
-         <MealReviews></MealReviews>
+          <MealReviews></MealReviews>
         ),
       },
       {
         path: 'myfavorite',
         element: (
-        <FavoriteMeal></FavoriteMeal>
+          <FavoriteMeal></FavoriteMeal>
         ),
       },
       {
         path: 'myReviews',
         element: (
-        <MyReview></MyReview>
+          <MyReview></MyReview>
         ),
       },
       {
         path: 'statistics',
         element: (
-    <Statistics></Statistics>
+          <Statistics></Statistics>
         ),
       },
-      { path: "manageUser", element: <ManageUsers /> },
-      { path: "manageRequest", element: <ManageRequest></ManageRequest> },
-      { path: "orderRequest", element: <ChefOrderRequests></ChefOrderRequests> },
+      {
+        path: "manageUser", element:
+      
+            <ManageUsers />
+         
+
+      },
+      {
+        path: "manageRequest", element:
+         
+            <ManageRequest></ManageRequest>
+          
+
+
+      },
+      {
+        path: "orderRequest", element:
+     
+  <ChefOrderRequests></ChefOrderRequests>
+
+        
+      },
     ]
   }
 ])

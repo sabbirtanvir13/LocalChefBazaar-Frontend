@@ -1,18 +1,18 @@
 import { ShoppingCart, Truck, ChefHat } from "lucide-react";
-
+import burgerimg from '../../../src/assets/download (19).png'
 const HighlightSection = () => {
   return (
     <div className="max-w-6xl mx-auto p-6 grid grid-cols-1 lg:grid-cols-3 gap-6 min-h-[420px]">
       
       {/* Left Section */}
       <div className="bg-gradient-to-br from-yellow-400 to-orange-400 rounded-2xl p-6 text-white flex flex-col justify-between h-[475px]">
-        <div>
+        <div className="mt-[80px]">
           <p className="text-sm uppercase font-semibold">New!</p>
           <h1 className="text-3xl font-bold mt-2">Tasty Burger</h1>
         </div>
 
         <img
-          src="https://ibb.co/cXKTMxWd"
+          src={burgerimg}
           alt="Burger"
           className="w-full max-w-[260px] mx-auto object-contain"
         />
@@ -40,16 +40,7 @@ const HighlightSection = () => {
 
       </div>
 
-      {/* Right Section */}
-      {/* <div className="flex flex-col justify-center">
-        <h2 className="text-2xl font-bold mb-6">Our Categories</h2>
-
-        <div className="space-y-6">
-          <CategoryItem icon={<ShoppingCart />} color="bg-red-100 text-red-500" />
-          <CategoryItem icon={<Truck />} color="bg-blue-100 text-blue-500" />
-          <CategoryItem icon={<ChefHat />} color="bg-green-100 text-green-500" />
-        </div>
-      </div> */}
+    
 
       {/* Right Section */}
 <div className="flex flex-col ml-[50px] justify-center h-[475px]">
