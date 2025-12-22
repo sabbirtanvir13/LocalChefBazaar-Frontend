@@ -45,9 +45,9 @@ const LatestMeals = () => {
       <div className="text-center mb-14">
         <Link
           to="/meals"
-          className="inline-block bg-gradient-to-r from-indigo-500 to-purple-500 
-          text-white px-8 py-3 rounded-full font-semibold shadow-md 
-          hover:shadow-lg hover:scale-105 transition"
+          className="inline-block hover:bg-orange-500 transition
+          text-black px-8 py-3 rounded-full font-semibold shadow-md 
+          hover:shadow-lg hover:scale-105 "
         >
           View All Meals
         </Link>
