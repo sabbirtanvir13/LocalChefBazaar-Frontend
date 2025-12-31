@@ -24,16 +24,6 @@ LocalChefBazaar is a MERN stack web application that connects local home chefs w
 react, react-router-dom, axios, firebase, react-hook-form, framer-motion, sweetalert2, recharts, express, mongodb, jsonwebtoken, stripe
 ---
 
-## ⚙️ Local Setup
-```bash
-git clone <https://github.com/sabbirtanvir13/LocalChefBazaar-Frontend.git>
-git clone https://github.com/sabbirtanvir13/LocalChefBazaar-Server.git>
-
-# Client
-cd client && npm install && npm run dev
-
-# Server
-cd server && npm install && npm run start
 
 ---
 ## Admin
@@ -45,4 +35,17 @@ cd server && npm install && npm run start
 ---
 ## Live Link
 ** https://localchefbazar-4ff5a.web.app**
+
+## ⚙️ Local Setup
+```bash
+git clone https://github.com/sabbirtanvir13/LocalChefBazaar-Frontend.git
+git clone https://github.com/sabbirtanvir13/LocalChefBazaar-Server.git
+
+# Client
+cd client && npm install && npm run dev
+
+# Server
+cd server && npm install && npm run start
+
+
 
