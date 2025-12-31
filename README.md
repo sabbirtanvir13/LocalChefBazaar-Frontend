@@ -1,16 +1,36 @@
-# React + Vite
+# 🍽️ LocalChefBazaar  
+---
+## 📌 Overview
+LocalChefBazaar is a MERN stack web application that connects local home chefs with customers who want fresh, homemade meals. Users can explore daily meals, place orders, make secure payments, track orders, give reviews, and save favorite meals. Chefs and Admins manage meals, orders, users, and platform activities through role-based dashboards.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+---
 
-Currently, two official plugins are available:
+## 🛠️ Tech Stack
+**Client:** React, React Router, Tailwind CSS, Firebase Auth, Axios, React Hook Form, Framer Motion  
+**Server:** Node.js, Express.js, MongoDB, JWT, Stripe, dotenv
+---
+## ✨ Key Features
+- Email & Password Authentication (Firebase)
+- JWT-based protected routes
+- Role-based Dashboard (User / Chef / Admin)
+- Meal listing with pagination & price sorting
+- Order placement with Stripe payment
+- Review & Favorite meal system
+- Chef meal & order management
+- Admin user, request & statistics management
+- Fully responsive & animated UI
+---
+## 📦 NPM Packages Used
+react, react-router-dom, axios, firebase, react-hook-form, framer-motion, sweetalert2, recharts, express, mongodb, jsonwebtoken, stripe
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ⚙️ Local Setup
+```bash
+git clone <client-repo>
+git clone <server-repo>
 
-## React Compiler
+# Client
+cd client && npm install && npm run dev
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+# Server
+cd server && npm install && npm run start
