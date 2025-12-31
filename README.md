@@ -26,11 +26,23 @@ react, react-router-dom, axios, firebase, react-hook-form, framer-motion, sweeta
 
 ## ⚙️ Local Setup
 ```bash
-git clone <client-repo>
-git clone <server-repo>
+git clone <https://github.com/sabbirtanvir13/LocalChefBazaar-Frontend.git>
+git clone https://github.com/sabbirtanvir13/LocalChefBazaar-Server.git>
 
 # Client
 cd client && npm install && npm run dev
 
 # Server
 cd server && npm install && npm run start
+
+---
+## Admin
+- **Email:** adminlocalchefbazar@gmail.com  
+- **Password:**Admin12@
+
+## Developer
+**Tanvir Ahmed Sabbir**
+---
+## Live Link
+** https://localchefbazar-4ff5a.web.app**
+
