@@ -25,6 +25,8 @@ import ManageUsers from "../Pages/Dashboard/Admin/ManageUser";
 import ManageRequest from "../Pages/Dashboard/Admin/ManageRequest";
 import MyReview from "../Pages/Dashboard/User/MyReview";
 import ChefOrderRequests from "../Pages/Dashboard/Chef/ChefOrderRequests";
+import AllChef from "../Pages/Home/AllChef/AllChef";
+import AddChef from "../components/form/AddChef ";
 
 
 
@@ -49,6 +51,10 @@ export const router = createBrowserRouter([
       {
         path: '/meals',
         Component: Meals
+      },
+      {
+        path: '/allChef',
+        Component: AllChef
       },
       {
         path: '/meal/:id',
@@ -147,6 +153,12 @@ export const router = createBrowserRouter([
         path: 'statistics',
         element: (
           <Statistics></Statistics>
+        ),
+      },
+      {
+        path: 'addChef',
+        element: (
+          <AddChef></AddChef>
         ),
       },
       {

@@ -173,6 +173,15 @@ const DashboardLayout = () => {
 
                   </li>
               
+                  <li>
+                    <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Add-Chef" to='/dashboard/addChef'>
+                      <FaClipboardList />
+
+                      <span className="is-drawer-close:hidden">Add-Chef</span>
+                    </NavLink>
+
+                  </li>
+              
 
 
                 </>

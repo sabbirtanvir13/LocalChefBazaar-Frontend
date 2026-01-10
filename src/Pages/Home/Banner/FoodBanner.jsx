@@ -99,7 +99,7 @@ export default function FoodBanner() {
             </Link>
 
             <a target="_blank"
-              rel="noopener noreferrer" href="https://youtube.com/shorts/TFt7n-U-p-g?si=rIvTgkU9XCmvJs5E" className="flex items-center gap-2 border border-orange-300 px-7 py-3 rounded-full text-orange-500 font-semibold hover:bg-orange-50 transition">
+              rel="noopener noreferrer" b  href="https://youtube.com/shorts/TFt7n-U-p-g?si=rIvTgkU9XCmvJs5E" className="flex items-center gap-2 border border-orange-300 px-7 py-3 rounded-full text-orange-500 font-semibold hover:bg-orange-50 transition">
               ▶ Watch Cooking
             </a>
           </div>

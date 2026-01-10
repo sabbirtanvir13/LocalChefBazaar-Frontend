@@ -6,6 +6,8 @@ import Offer from '../Offer/Offer';
 import Satisfaction from '../Satisfaction/Satisfaction';
 import LatestMeals from '../../latest-meals/LatestMeals';
 import HighlightSection from '../../HighlightSection/HighlightSection';
+import Newsletter from '../Newsletter/Newsletter';
+import CTA from '../CTA/CTA';
 
 
 const Home = () => {
@@ -18,6 +20,8 @@ const Home = () => {
         <WhyChooseUs></WhyChooseUs>
         <Satisfaction></Satisfaction>
           <TopChef></TopChef>
+          <Newsletter></Newsletter>
+          <CTA></CTA>
         </div>
     );
 };
