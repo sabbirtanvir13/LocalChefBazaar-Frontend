@@ -27,6 +27,7 @@ import MyReview from "../Pages/Dashboard/User/MyReview";
 import ChefOrderRequests from "../Pages/Dashboard/Chef/ChefOrderRequests";
 import AllChef from "../Pages/Home/AllChef/AllChef";
 import AddChef from "../components/form/AddChef ";
+import ChefProfile from "../Pages/Home/ChefProfile/ChefProfile";
 
 
 
@@ -56,6 +57,12 @@ export const router = createBrowserRouter([
         path: '/allChef',
         Component: AllChef
       },
+      {
+        path: "/chef/:id",
+        element: <ChefProfile />
+      },
+     
+
       {
         path: '/meal/:id',
         element: <MealsDetails></MealsDetails>
@@ -110,10 +117,10 @@ export const router = createBrowserRouter([
       {
         path: 'createmeal',
         element: (
-       
-  <CreateMealForm></CreateMealForm>
-      
-        
+
+          <CreateMealForm></CreateMealForm>
+
+
         )
 
       },
@@ -126,9 +133,9 @@ export const router = createBrowserRouter([
       {
         path: 'myMeals',
         element: (
-          
- <MyMeals></MyMeals>
-        
+
+          <MyMeals></MyMeals>
+
         ),
       },
       {
@@ -163,25 +170,25 @@ export const router = createBrowserRouter([
       },
       {
         path: "manageUser", element:
-      
-            <ManageUsers />
-         
+
+          <ManageUsers />
+
 
       },
       {
         path: "manageRequest", element:
-         
-            <ManageRequest></ManageRequest>
-          
+
+          <ManageRequest></ManageRequest>
+
 
 
       },
       {
         path: "orderRequest", element:
-     
-  <ChefOrderRequests></ChefOrderRequests>
 
-        
+          <ChefOrderRequests></ChefOrderRequests>
+
+
       },
     ]
   }

@@ -2,7 +2,7 @@ import React from 'react';
 
 const Newsletter = () => {
     return (
-      <section className="bg-orange-50 dark:bg-gray-900 py-16">
+      <section className=" py-16">
   <div className="max-w-4xl mx-auto text-center px-4">
     <h2 className="text-3xl font-bold mb-4">
       Discover Local Chefs & Fresh Homemade Food

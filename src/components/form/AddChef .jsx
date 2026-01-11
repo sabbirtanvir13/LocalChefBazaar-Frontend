@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { useState } from "react";
+import Swal from "sweetalert2";
 
 
 const AddChef = () => {
@@ -24,12 +25,22 @@ const AddChef = () => {
       setSuccess("");
       setError("");
 
-      await axios.post("http://localhost:3000/addChef", data);
+      await axios.post("http://localhost:3000/allChefs", data);
 
-      setSuccess("Chef added successfully ✅");
+     Swal.fire({
+        icon: "success",
+        title: "Chef Added!",
+        text: "Chef added successfully ✅",
+        timer: 2000,
+        showConfirmButton: false,
+      });
       reset();
     } catch (err) {
-      setError("Failed to add chef ❌",err);
+       Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Failed to add chef ❌",
+      });
     } finally {
       setLoading(false);
     }
@@ -37,13 +48,13 @@ const AddChef = () => {
 
   return (
     <div className="max-w-xl mx-auto py-16 px-4">
-      <h2 className="text-3xl font-bold text-center mb-8">
+      <h2 className="text-3xl text-base-content font-bold text-center mb-8">
         Add New Chef
       </h2>
 
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md space-y-5"
+        className="bg-white p-6 rounded-xl shadow-md space-y-5"
       >
         {/* Chef Name */}
         <div>
@@ -58,7 +69,7 @@ const AddChef = () => {
                 message: "Minimum 3 characters",
               },
             })}
-            className="w-full px-4 py-2 rounded-lg border"
+            className="w-full text-base-content px-4 py-2 rounded-lg border"
           />
           {errors.name && (
             <p className="text-red-500 text-sm mt-1">
@@ -74,10 +85,10 @@ const AddChef = () => {
             {...register("category", {
               required: "Category is required",
             })}
-            className="w-full px-4 py-2 rounded-lg border"
+            className="w-full text-base-content px-4 py-2 rounded-lg border"
           >
             <option value="">Select category</option>
-            <option value="Traditional Bengali">Traditional Bengali</option>
+            <option  value="Traditional Bengali">Traditional Bengali</option>
             <option value="Biryani Specialist">Biryani Specialist</option>
             <option value="Home Cooked Meals">Home Cooked Meals</option>
             <option value="Desserts & Pitha">Desserts & Pitha</option>
@@ -99,7 +110,7 @@ const AddChef = () => {
             {...register("image", {
               required: "Image URL is required",
             })}
-            className="w-full px-4 py-2 rounded-lg border"
+            className="w-full text-base-content px-4 py-2 rounded-lg border"
           />
           {errors.image && (
             <p className="text-red-500 text-sm mt-1">
@@ -120,7 +131,7 @@ const AddChef = () => {
         <button
           type="submit"
           disabled={loading}
-          className="w-full py-3 bg-orange-500 text-white rounded-lg font-semibold"
+          className="w-full py-3 bg-orange-500 text-base-content rounded-lg font-semibold"
         >
           {loading ? "Adding..." : "Add Chef"}
         </button>
@@ -130,3 +141,5 @@ const AddChef = () => {
 };
 
 export default AddChef;
+
+

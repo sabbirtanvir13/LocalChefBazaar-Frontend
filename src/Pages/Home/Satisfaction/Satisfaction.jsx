@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Satisfaction() {
     return (
-        <section className="bg-[#fff7f0] py-20 overflow-hidden">
+        <section className=" py-20 overflow-hidden">
             <div className="max-w-6xl mx-auto px-6 text-center relative">
                 {/* Heading */}
                 <h2 className="text-3xl md:text-3xl font-extrabold text-gray-900">

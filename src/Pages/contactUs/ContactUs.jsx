@@ -3,7 +3,7 @@ import React from 'react';
 const ContactUs = () => {
     return (
         <div className="min-h-screen flex items-center justify-center bg-gray-100 p-5">
-            <div className="bg-white rounded-2xl shadow-xl p-8 max-w-xl w-full text-center">
+            <div className="bg-white rounded-2xl text-base-content shadow-xl p-8 max-w-xl w-full text-center">
                 <img
                     src="https://img.freepik.com/free-vector/contact-us-concept-illustration_114360-2299.jpg"
                     alt="Contact"

@@ -8,6 +8,8 @@ import LoadingSpinner from '../Pages/Shared/LoadingSpinner';
 import { BsCartCheckFill, BsFillCartCheckFill } from 'react-icons/bs';
 import Logo from '../components/Logo/Logo';
 import { FaUsersCog } from 'react-icons/fa';
+import { SiCodechef } from "react-icons/si";
+
 
 const DashboardLayout = () => {
 
@@ -175,7 +177,8 @@ const DashboardLayout = () => {
               
                   <li>
                     <NavLink className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Add-Chef" to='/dashboard/addChef'>
-                      <FaClipboardList />
+                  <SiCodechef />
+
 
                       <span className="is-drawer-close:hidden">Add-Chef</span>
                     </NavLink>

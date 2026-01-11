@@ -17,7 +17,7 @@ export default function Card({ meal }) {
 
   return (
     <Link to={`/meal/${_id}`}>
-      <div className="text-center rounded-2xl shadow-md p-6 bg-white hover:shadow-xl transition">
+      <div className="text-center rounded-2xl shadow-md p-6 bg-white  hover:shadow-xl transition">
         {/* Food Image */}
         <img
           src={image}
@@ -35,7 +35,7 @@ export default function Card({ meal }) {
         </div>
 
         {/* Food Name */}
-        <h3 className="font-bold text-lg mt-2">{foodname}</h3>
+        <h3 className="font-bold  text-base-content text-lg mt-2">{foodname}</h3>
 
         {/* Chef Info */}
         <p className="text-sm text-gray-600 mt-1">

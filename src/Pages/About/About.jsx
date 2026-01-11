@@ -2,7 +2,7 @@ import React from "react";
 
 const About = () => {
   return (
-    <section className=" text-white to-gray-50 py-16">
+    <section className="  py-16">
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
           <div className="rounded-2xl overflow-hidden shadow-xl">
@@ -12,15 +12,15 @@ const About = () => {
               className="w-full h-80 object-cover md:h-96"
             />
           </div>
-          <div>
+          <div className="text-base-content">
             <h3 className="text-3xl font-extrabold mb-3">About Our Kitchen</h3>
             <p className=" mb-6 leading-relaxed">
               We’re a small team of passionate chefs focused on fresh ingredients,
               bold flavors, and fast delivery. Every meal is prepared with care —
               from our family recipes to seasonal specials.
             </p>
-            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <li className="flex items-start gap-3 bg-white rounded-2xl p-4 shadow">
+            <ul className="grid grid-cols-1  sm:grid-cols-2 gap-4">
+              <li className="flex items-start  gap-3 bg-white rounded-2xl p-4 shadow">
                 <div className="flex-shrink-0 w-10 h-10 rounded-full bg-green-100 grid place-items-center font-semibold text-green-700">✓</div>
                 <div>
                   <div className="font-semibold">Fresh Ingredients</div>

@@ -48,7 +48,7 @@ const ManageRequest = () => {
   }
 
   return (
-    <div className="p-6">
+    <div className="p-6 bg-white rounded-lg shadow-md">
       {/* 🔥 PAGE TITLE */}
       <h2 className="text-2xl font-semibold mb-6">
         Manage Role Requests

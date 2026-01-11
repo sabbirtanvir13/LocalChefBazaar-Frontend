@@ -16,7 +16,7 @@
 
 
 
-  
+
 
 //   const links = (
 //     <>
@@ -106,13 +106,30 @@
 // export default Navbar;
 
 import { Link, NavLink } from "react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Logo from "../../../components/Logo/Logo";
 import useAuth from "../../../hooks/useAuth";
-
+import { Sun, Moon } from "lucide-react"; 
 const Navbar = () => {
   const { user, logout } = useAuth();
   const [menuOpen, setMenuOpen] = useState(false);
+  // const [darkMode, setDarkMode] = useState(false);
+
+  // Persist dark mode in localStorage
+ useEffect(() => {
+  const savedTheme = localStorage.getItem("theme") || "light";
+  document.documentElement.setAttribute("data-theme", savedTheme);
+}, []);
+
+
+ const toggleTheme = () => {
+  const html = document.documentElement;
+  const currentTheme = html.getAttribute("data-theme");
+
+  const newTheme = currentTheme === "dark" ? "light" : "dark";
+  html.setAttribute("data-theme", newTheme);
+  localStorage.setItem("theme", newTheme);
+};
 
   const handleLogout = () => {
     logout().catch(console.log);
@@ -125,7 +142,7 @@ const Navbar = () => {
         <NavLink
           to="/"
           className={({ isActive }) =>
-            isActive ? "text-primary font-semibold" : "text-black"
+            isActive ? "text-white bg-orange-500 rounded-2xl font-semibold" : "text-black"
           }
         >
           Home
@@ -136,7 +153,7 @@ const Navbar = () => {
         <NavLink
           to="/meals"
           className={({ isActive }) =>
-            isActive ? "text-primary font-semibold" : "text-black"
+            isActive ? "text-white bg-orange-500 rounded-2xl font-semibold" : "text-black"
           }
         >
           Meals
@@ -147,7 +164,7 @@ const Navbar = () => {
         <NavLink
           to="/about"
           className={({ isActive }) =>
-            isActive ? "text-primary font-semibold" : "text-black"
+            isActive ? "text-white bg-orange-500 rounded-2xl font-semibold" : "text-black"
           }
         >
           About
@@ -158,10 +175,20 @@ const Navbar = () => {
         <NavLink
           to="/contact"
           className={({ isActive }) =>
-            isActive ? "text-primary font-semibold" : "text-black"
+            isActive ? "text-white bg-orange-500 rounded-2xl font-semibold" : "text-black"
           }
         >
           Contact Us
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/allChef"
+          className={({ isActive }) =>
+            isActive ? "text-white bg-orange-500 rounded-2xl font-semibold" : "text-black"
+          }
+        >
+          Explore Chefs
         </NavLink>
       </li>
 
@@ -169,7 +196,7 @@ const Navbar = () => {
         <NavLink
           to="/dashboard"
           className={({ isActive }) =>
-            isActive ? "text-primary font-semibold" : "text-black"
+            isActive ? "text-white bg-orange-500 rounded-2xl font-semibold" : "text-black"
           }
         >
           Dashboard
@@ -208,6 +235,18 @@ const Navbar = () => {
 
       {/* Navbar End */}
       <div className="navbar-end flex items-center gap-2">
+
+
+
+       <button onClick={toggleTheme} className="btn  btn-ghost btn-circle">
+  {document.documentElement.getAttribute("data-theme") === "dark"
+    ? <Sun />
+    : <Moon />
+  }
+</button>
+
+
+
         {!user && (
           <>
             <Link to="/login" className="btn btn-outline">
@@ -259,3 +298,5 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+

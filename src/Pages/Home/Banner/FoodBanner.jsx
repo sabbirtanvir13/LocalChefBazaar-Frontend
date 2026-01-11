@@ -73,12 +73,13 @@ import BargerBanner from '../../../../src/assets/floating-juicy-burger-_11665643
 import { Link } from "react-router";
 export default function FoodBanner() {
   return (
-    <section className="bg-[#fff7f0] min-h-screen flex items-center overflow-hidden">
+    <section className=" min-h-screen flex items-center overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
         {/* LEFT CONTENT */}
         <div>
-          <h1 className="text-5xl lg:text-6xl font-extrabold leading-tight text-gray-900">
+          <h1 className="text-5xl lg:text-6xl font-extrabold leading-tight text-base-content
+">
             Yummy <br />
             tasty{" "}
             <span className="inline-flex items-center gap-2 text-orange-500">

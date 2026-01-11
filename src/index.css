@@ -1,4 +1,4 @@
-@import "tailwindcss";
+/* @import "tailwindcss";
 @plugin "daisyui";
 
 @plugin "daisyui/theme" {
@@ -16,4 +16,29 @@ body {
     font-style: normal;
      background: #fff7f0
 
+} */
+
+
+@import "tailwindcss";
+@plugin "daisyui";
+
+/*  Light Theme */
+@plugin "daisyui/theme" {
+  name: "light";
+  default: true;
+  --color-primary: #CAEB66;
+  --color-secondary: #03373D;
+  --color-base-100: #fff7f0;
+}
+
+/* 🌙 Dark Theme */
+@plugin "daisyui/theme" {
+  name: "dark";
+  --color-primary: #facc15;
+  --color-secondary: #22d3ee;
+  --color-base-100: #0f172a;
+}
+
+body {
+  font-family: "Urbanist", sans-serif;
 }

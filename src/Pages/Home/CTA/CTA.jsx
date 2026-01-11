@@ -1,8 +1,10 @@
 import React from 'react';
 
+
 const CTA = () => {
     return (
-       <section className="bg-orange-500 text-white py-20">
+
+         <section className="bg-orange-500 rounded-2xl md:ml-10 md:mr-10 text-white py-20">
   <div className="max-w-5xl mx-auto text-center px-4">
     <h2 className="text-4xl font-bold mb-6">
       Order Fresh Homemade Food from Local Chefs
@@ -20,14 +22,15 @@ const CTA = () => {
         Explore Chefs
       </a>
       <a
-        href="/become-chef"
+        href="/about"
         className="px-8 py-3 border border-white rounded-lg hover:bg-white hover:text-orange-500 transition"
       >
-        Become a Chef
+       About Us
       </a>
     </div>
   </div>
 </section>
+
 
     );
 };
